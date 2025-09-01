@@ -1,6 +1,6 @@
 # A Chatbot For My Department (CSE Department, Comilla University)
 
-![Dashboard Screenshot](project.png)
+![Dashboard Screenshot](project.PNG)
 
 This project demonstrates how to build a **PDF-based Question & Answer chatbot** using Python, LangChain, Hugging Face models, and Gradio. The system allows users to upload a PDF (like department handbooks or notes) and ask questions in natural language, retrieving concise answers directly from the document.
 
