@@ -1,5 +1,5 @@
 ⚡ Fast PDF Q&A Chatbot - CSE Department, Comilla University
-![Project Screenshot](project.PNG)
+
 
 This project demonstrates how to build a PDF-based Question & Answer chatbot using Python, LangChain, Hugging Face models, and Gradio. The system allows users to upload a PDF (like department handbooks or notes) and ask questions in natural language, retrieving concise answers directly from the document.
 
@@ -16,6 +16,7 @@ Create a vector store using FAISS for semantic search
 Use a Hugging Face LLM (google/flan-t5-small) to answer questions based on retrieved context
 
 Provide a web interface using Gradio for interactive Q&A
+![Project Screenshot](project.PNG)
 
 🧰 Tools & Technologies
 Tool	Purpose
