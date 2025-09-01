@@ -1,121 +1,90 @@
-A Chatbot For My Department - CSE Department, Comilla University
+# A Chatbot For My Department (CSE Department, Comilla University)
 
+![Dashboard Screenshot](project.png)
 
-This project demonstrates how to build a PDF-based Question & Answer chatbot using Python, LangChain, Hugging Face models, and Gradio. The system allows users to upload a PDF (like department handbooks or notes) and ask questions in natural language, retrieving concise answers directly from the document.
+This project demonstrates how to build a **PDF-based Question & Answer chatbot** using Python, LangChain, Hugging Face models, and Gradio. The system allows users to upload a PDF (like department handbooks or notes) and ask questions in natural language, retrieving concise answers directly from the document.
 
-![Project Screenshot](project.PNG)
+---
 
-📌 Project Overview
+## 📌 Project Overview
 
-The goal of this project is to:
+The goal of this project is to:  
 
-Load and preprocess PDF documents for efficient information retrieval
+- Load and preprocess PDF documents for efficient information retrieval  
+- Split text into manageable chunks for embedding and similarity search  
+- Create a vector store using FAISS for semantic search  
+- Use a Hugging Face LLM (`google/flan-t5-small`) to answer questions based on retrieved context  
+- Provide a web interface using Gradio for interactive Q&A  
 
-Split text into manageable chunks for embedding and similarity search
+---
 
-Create a vector store using FAISS for semantic search
+## 🧰 Tools & Technologies
 
-Use a Hugging Face LLM (google/flan-t5-small) to answer questions based on retrieved context
+| Tool                 | Purpose                                       |
+|---------------------|-----------------------------------------------|
+| `PyPDFLoader`       | Load and read PDF documents                   |
+| `LangChain`         | Manage document retrieval & LLM pipelines    |
+| `sentence-transformers` | Create embeddings for text chunks          |
+| `FAISS`             | Vector store for semantic search             |
+| `Hugging Face Transformers` | Language model for generating answers |
+| `Gradio`            | Web interface for interacting with the chatbot |
+| `torch`             | GPU/CPU support for LLM                       |
+| `psutil` & `socket` | Port management and process handling        |
 
-Provide a web interface using Gradio for interactive Q&A
+---
 
+## 📂 Files Included
 
-🧰 Tools & Technologies
-Tool	Purpose
-PyPDFLoader	Load and read PDF documents
-LangChain	Manage document retrieval & LLM pipelines
-sentence-transformers	Create embeddings for text chunks
-FAISS	Vector store for semantic search
-Hugging Face Transformers	Language model for generating answers
-Gradio	Web interface for interacting with the chatbot
-torch	GPU/CPU support for LLM
-psutil & socket	Port management and process handling
-📂 Files Included
+- `a_chatbot_using_llm.ipynb` – Main Python script containing PDF processing, LLM pipeline, and Gradio interface  
+- `cse.pdf` – PDF document used for Q&A (CSE Department info)  
+- `project.png` – Screenshot or illustration of the project   
+- `README.md` – Project documentation 
 
-a_charbot_using_llm.ipynb – Main Python script containing PDF processing, LLM pipeline, and Gradio interface
+---
 
-cse.pdf – PDF document used for Q&A (CSE Department info)
-
-project.png – Screenshot or illustration of the project
-
-README.md – Project documentation (this file)
-
-🚀 How to Run the Project
-
-Clone the repository:
-
-git clone https://github.com/nahid-10/rag_chatbot_for_my_department.git
-cd rag_chatbot_for_my_department
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Make sure your Hugging Face token is set:
-
-from huggingface_hub import login
-login(token="YOUR_HUGGINGFACE_TOKEN")
-
-
-Run the main script:
-
-python main.py
-
-
-Open the Gradio link displayed in your console and start asking questions about the CSE Department.
-
-📊 Sample Usage
+## 📊 Sample Usage
 
 Some example questions you can ask:
 
-“Who is the head of the CSE Department?”
+- “Who is the head of the CSE Department?”  
+- “What courses are offered in the CSE program?”  
+- “How many semesters are in the CSE curriculum?”  
+- “What lab facilities are available?”  
 
-“What courses are offered in the CSE program?”
+The chatbot provides **concise, one-sentence answers** extracted from the PDF content.
 
-“How many semesters are in the CSE curriculum?”
+---
 
-“What lab facilities are available?”
+## ⚙️ Technical Details
 
-The chatbot provides concise, one-sentence answers extracted from the PDF content.
+- **PDF Loader:** `PyPDFLoader` from `langchain-community`  
+- **Text Splitter:** `RecursiveCharacterTextSplitter` (chunk_size=400, overlap=50)  
+- **Embeddings:** `sentence-transformers/all-MiniLM-L6-v2`  
+- **Vector Store:** FAISS with cosine similarity  
+- **LLM:** Hugging Face pipeline (`google/flan-t5-small`)  
+- **QA Chain:** `RetrievalQA` with `stuff` chain type  
+- **Interface:** `gr.Blocks()` from Gradio  
 
-⚙️ Technical Details
+---
 
-PDF Loader: PyPDFLoader from langchain-community
+## 🔧 Optimization Features
 
-Text Splitter: RecursiveCharacterTextSplitter (chunk_size=400, overlap=50)
+- **LRU Caching:** Speeds up PDF processing and LLM pipeline initialization  
+- **GPU Support:** Automatically uses CUDA if available  
+- **Port Management:** Finds free ports and terminates processes blocking them  
+- **Logging:** Built-in logging for debugging and monitoring  
 
-Embeddings: sentence-transformers/all-MiniLM-L6-v2
+---
 
-Vector Store: FAISS with cosine similarity
+## 💡 Future Improvements
 
-LLM: Hugging Face pipeline (google/flan-t5-small)
+- Add **PDF upload feature** in the Gradio interface  
+- Support **multiple PDFs** simultaneously  
+- Use **larger or more advanced LLMs** for more accurate answers  
+- Highlight the exact part of the PDF where the answer is found  
 
-QA Chain: RetrievalQA with stuff chain type
+---
 
-Interface: gr.Blocks() from Gradio
+## 📄 License
 
-🔧 Optimization Features
-
-LRU Caching: Speeds up PDF processing and LLM pipeline initialization
-
-GPU Support: Automatically uses CUDA if available
-
-Port Management: Finds free ports and terminates processes blocking them
-
-Logging: Built-in logging for debugging and monitoring
-
-💡 Future Improvements
-
-Add PDF upload feature in the Gradio interface
-
-Support multiple PDFs simultaneously
-
-Use larger or more advanced LLMs for more accurate answers
-
-Highlight the exact part of the PDF where the answer is found
-
-📄 License
-
-This project is open-source and free to use for educational purposes.
+This project is **open-source** and free to use for educational purposes.
