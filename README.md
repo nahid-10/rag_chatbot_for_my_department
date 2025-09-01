@@ -1,79 +1,80 @@
-⚡ Fast PDF Q&A - CSE Department, Comilla University
+⚡ Fast PDF Q&A Chatbot - CSE Department, Comilla University
 
-A fast and efficient PDF-based Question & Answer system designed for the CSE Department of Comilla University. Users can upload a PDF document (e.g., department syllabus, handbook, or notes) and ask questions in natural language. The system retrieves the relevant information and provides concise, one-sentence answers.
+This project demonstrates how to build a PDF-based Question & Answer chatbot using Python, LangChain, Hugging Face models, and Gradio. The system allows users to upload a PDF (like department handbooks or notes) and ask questions in natural language, retrieving concise answers directly from the document.
 
-📂 Project Structure
-Fast-PDF-QA/
-│
-├── cse.pdf                  # PDF document containing CSE Department information
-├── project.png              # Project illustration/screenshot
-├── a_chatbot_using_llm.ipyb # Main Python script with Gradio interface and LangChain pipeline
-└── README.md
+📌 Project Overview
 
-🛠 Features
+The goal of this project is to:
 
-PDF Document Loader – Automatically loads and preprocesses the PDF.
+Load and preprocess PDF documents for efficient information retrieval
 
-Text Chunking – Splits PDF content into smaller chunks for better retrieval.
+Split text into manageable chunks for embedding and similarity search
 
-Embeddings & Vector Store – Uses sentence-transformers with FAISS for semantic search.
+Create a vector store using FAISS for semantic search
 
-LLM-based Q&A – Uses Hugging Face models (e.g., google/flan-t5-small) for natural language answers.
+Use a Hugging Face LLM (google/flan-t5-small) to answer questions based on retrieved context
 
-Gradio Interface – User-friendly web interface for asking questions.
+Provide a web interface using Gradio for interactive Q&A
 
-Optimized & Cached – LRU caching for faster PDF processing and LLM initialization.
+🧰 Tools & Technologies
+Tool	Purpose
+PyPDFLoader	Load and read PDF documents
+LangChain	Manage document retrieval & LLM pipelines
+sentence-transformers	Create embeddings for text chunks
+FAISS	Vector store for semantic search
+Hugging Face Transformers	Language model for generating answers
+Gradio	Web interface for interacting with the chatbot
+torch	GPU/CPU support for LLM
+psutil & socket	Port management and process handling
+📂 Files Included
 
-Automatic Port Handling – Finds free ports and terminates conflicting processes automatically.
+a_charbot_using_llm.ipynb – Main Python script containing PDF processing, LLM pipeline, and Gradio interface
 
-💻 Installation
+cse.pdf – PDF document used for Q&A (CSE Department info)
 
-Clone the repository
+project.png – Screenshot or illustration of the project
+
+README.md – Project documentation (this file)
+
+🚀 How to Run the Project
+
+Clone the repository:
 
 git clone https://github.com/nahid-10/rag_chatbot_for_my_department.git
 cd rag_chatbot_for_my_department
 
 
-Install dependencies
+Install dependencies:
 
 pip install -r requirements.txt
 
 
-Or manually:
-
-pip install langchain-community langchain pypdf sentence-transformers faiss-cpu gradio transformers huggingface-hub
-
-
-Hugging Face Authentication
+Make sure your Hugging Face token is set:
 
 from huggingface_hub import login
 login(token="YOUR_HUGGINGFACE_TOKEN")
 
-⚡ How to Run
+
+Run the main script:
+
 python main.py
 
 
-The Gradio interface will launch on a free port automatically (default starts from 7860).
+Open the Gradio link displayed in your console and start asking questions about the CSE Department.
 
-Open the displayed link in your browser.
+📊 Sample Usage
 
-Ask questions about the CSE Department using the input box.
-
-📝 Usage
-
-Type your question in the text box (e.g., “What courses are offered in the CSE Department?”).
-
-Click Submit.
-
-The system returns a concise answer based on the PDF content.
-
-Example Questions:
+Some example questions you can ask:
 
 “Who is the head of the CSE Department?”
 
-“Vice president of cse society?”
+“What courses are offered in the CSE program?”
 
+“How many semesters are in the CSE curriculum?”
 
+“What lab facilities are available?”
+
+The chatbot provides concise, one-sentence answers extracted from the PDF content.
 
 ⚙️ Technical Details
 
@@ -85,39 +86,31 @@ Embeddings: sentence-transformers/all-MiniLM-L6-v2
 
 Vector Store: FAISS with cosine similarity
 
-LLM: Hugging Face pipeline google/flan-t5-small
+LLM: Hugging Face pipeline (google/flan-t5-small)
 
 QA Chain: RetrievalQA with stuff chain type
 
-Web Interface: gr.Blocks() from Gradio
+Interface: gr.Blocks() from Gradio
 
-🔧 Optimization
+🔧 Optimization Features
 
-LRU Caching: Speeds up PDF processing and LLM pipeline initialization.
+LRU Caching: Speeds up PDF processing and LLM pipeline initialization
 
-GPU Support: Automatically uses CUDA if available.
+GPU Support: Automatically uses CUDA if available
 
-Port Management: Automatically finds a free port and terminates processes blocking it.
+Port Management: Finds free ports and terminates processes blocking them
 
-Logging: Built-in logging for debugging and monitoring pipeline execution.
-
-📌 Notes
-
-Ensure your PDF (cse.pdf) is in the project directory.
-
-Adjust chunk_size and chunk_overlap in main.py for longer or shorter answers.
-
-For large PDFs, allow extra memory and GPU resources if available.
+Logging: Built-in logging for debugging and monitoring
 
 💡 Future Improvements
 
-Add PDF upload feature in the Gradio interface.
+Add PDF upload feature in the Gradio interface
 
-Enable multi-language support for questions and answers.
+Support multiple PDFs simultaneously
 
-Integrate advanced models for more accurate answers.
+Use larger or more advanced LLMs for more accurate answers
 
-Add answer highlighting from the original PDF content.
+Highlight the exact part of the PDF where the answer is found
 
 📄 License
 
